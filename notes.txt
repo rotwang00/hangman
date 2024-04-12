@@ -1,0 +1,19 @@
+Hangman
+=======
+
+Get list of words separated by length.
+Online or downloaded?
+
+Choose a secret word from the list.
+
+Draw screen:
+  Blanks for letters in secret word
+  Alphabet display
+    Letters are actually buttons
+    Letters not yet guessed appear normal
+    Letters alread guessed are grayed out
+  Empty gallows
+    ASCII or graphics?
+
+Add event listeners to alphabet buttons
+  Probably use event bubbling
