@@ -1,6 +1,7 @@
 const alphabetArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 const buttonContainer = document.getElementById("button-container");
+const gallowsContainer = document.getElementById("gallows");
 
 for (let letter of alphabetArray) {
   let newButton = document.createElement("button");
@@ -17,3 +18,71 @@ buttonContainer.addEventListener("click", function (e) {
     console.log(e.target.id);
   }
 });
+
+const gallows = [
+  `
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+`,
+  `
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+`,
+  `
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+`,
+  `
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========
+`,
+  `
+  +---+
+  |   |
+  O   |
+ /|\\\  |
+      |
+      |
+=========
+`,
+  `
+  +---+
+  |   |
+  O   |
+ /|\\\  |
+ /    |
+      |
+=========
+`,
+  `
+  +---+
+  |   |
+  O   |
+ /|\\\  |
+ / \\\  |
+      |
+=========
+`,
+];
+
+gallowsContainer.textContent = gallows[2];
