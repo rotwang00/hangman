@@ -5,6 +5,7 @@ Get list of words separated by length.
 Online or downloaded?
 
 Choose a secret word from the list.
+  Local file or API?
 
 Draw screen:
   Blanks for letters in secret word
