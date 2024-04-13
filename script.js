@@ -39,13 +39,13 @@ const gallows = [
 =========
 `,
   `
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
+  &nbsp&nbsp+---+<br>
+  &nbsp  |&nbsp&nbsp   |<br>
+  &nbsp O&nbsp&nbsp   |<br>
+  |   |<br>
+      |<br>
+      |<br>
+=========<br>
 `,
   `
   +---+
@@ -85,4 +85,4 @@ const gallows = [
 `,
 ];
 
-gallowsContainer.textContent = gallows[2];
+gallowsContainer.innerHTML = gallows[2];
