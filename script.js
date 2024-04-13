@@ -1,7 +1,7 @@
 const alphabetArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+let guessesMade = 0;
 
 const buttonContainer = document.getElementById("button-container");
-const gallowsContainer = document.getElementById("gallows");
 
 for (let letter of alphabetArray) {
   let newButton = document.createElement("button");
@@ -19,70 +19,22 @@ buttonContainer.addEventListener("click", function (e) {
   }
 });
 
-const gallows = [
-  `
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-`,
-  `
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-`,
-  `
-  &nbsp&nbsp+---+<br>
-  &nbsp  |&nbsp&nbsp   |<br>
-  &nbsp O&nbsp&nbsp   |<br>
-  |   |<br>
-      |<br>
-      |<br>
-=========<br>
-`,
-  `
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========
-`,
-  `
-  +---+
-  |   |
-  O   |
- /|\\\  |
-      |
-      |
-=========
-`,
-  `
-  +---+
-  |   |
-  O   |
- /|\\\  |
- /    |
-      |
-=========
-`,
-  `
-  +---+
-  |   |
-  O   |
- /|\\\  |
- / \\\  |
-      |
-=========
-`,
-];
+// Set up gallows images array
+const gallowsContainer = document.getElementById("gallows");
+let gallowsImages = [];
+let currentGallowsImage = 0;
+for (let i = 0; i <= 6; i++) {
+  let gallowsImage = document.createElement("img");
+  gallowsImage.src = `images/hangman-${i}.svg`;
+  gallowsImages.push(gallowsImage);
+}
 
-gallowsContainer.innerHTML = gallows[2];
+function updateGallows() {
+  while (gallowsContainer.firstChild) {
+    gallowsContainer.removeChild(gallowsContainer.firstChild);
+  }
+  gallowsContainer.appendChild(gallowsImages[guessesMade]);
+}
+
+guessesMade = 4;
+updateGallows();
