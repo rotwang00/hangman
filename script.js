@@ -15,7 +15,7 @@ for (let letter of alphabetArray) {
 // Use event bubbling to check if it's actually a button that has been pressed.
 buttonContainer.addEventListener("click", function (e) {
   if (e.target.classList.contains("letter-button")) {
-    console.log(e.target.id);
+    processGuess(e.target.id);
   }
 });
 
@@ -29,6 +29,9 @@ for (let i = 0; i <= 6; i++) {
   gallowsImages.push(gallowsImage);
 }
 
+// Set up secret word display
+const secretWordContainer = document.getElementById("secret-word");
+
 function updateGallows() {
   while (gallowsContainer.firstChild) {
     gallowsContainer.removeChild(gallowsContainer.firstChild);
@@ -36,5 +39,13 @@ function updateGallows() {
   gallowsContainer.appendChild(gallowsImages[guessesMade]);
 }
 
-guessesMade = 4;
-updateGallows();
+function updateSecretWordDisplay() {}
+
+function getSecretWord() {
+  let word = "GIRAFFE".split("");
+  return word;
+}
+
+function processGuess(guess) {
+  console.log(guess);
+}
