@@ -1,8 +1,15 @@
-const alphabetArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+// Initialize global variables
+let lettersNotGuessed = "";
+let secretWord = [];
+let wordInProgress = [];
 let guessesMade = 0;
 
-const buttonContainer = document.getElementById("button-container");
+// Set up secret word container
+const secretWordContainer = document.getElementById("secret-word-container");
 
+// Set up buttons
+const buttonContainer = document.getElementById("button-container");
+const alphabetArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 for (let letter of alphabetArray) {
   let newButton = document.createElement("button");
   newButton.innerHTML = letter;
@@ -29,8 +36,17 @@ for (let i = 0; i <= 6; i++) {
   gallowsImages.push(gallowsImage);
 }
 
-// Set up secret word display
-const secretWordContainer = document.getElementById("secret-word");
+function setUpRound() {
+  secretWord = "GIRAFFE".split("");
+  wordInProgress = [];
+  for (let i = 0; i < secretWord.length; i++) {
+    wordInProgress.push("_");
+  }
+  lettersNotGuessed = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  guessesMade = 0;
+  updateGallows();
+  return;
+}
 
 function updateGallows() {
   while (gallowsContainer.firstChild) {
@@ -39,13 +55,16 @@ function updateGallows() {
   gallowsContainer.appendChild(gallowsImages[guessesMade]);
 }
 
-function updateSecretWordDisplay() {}
-
-function getSecretWord() {
-  let word = "GIRAFFE".split("");
-  return word;
+function updateSecretWordDisplay() {
+  for (letter of wordInProgress) {
+    secretWordContainer.innerHTML += letter + " ";
+  }
 }
 
 function processGuess(guess) {
   console.log(guess);
 }
+
+setUpRound();
+
+updateSecretWordDisplay();
