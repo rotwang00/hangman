@@ -14,7 +14,8 @@ for (let letter of alphabetArray) {
   let newButton = document.createElement("button");
   newButton.innerHTML = letter;
   newButton.setAttribute("id", letter);
-  newButton.setAttribute("class", "letter-button");
+  newButton.classList.add("letter-button");
+  newButton.classList.add("not-guessed");
   buttonContainer.appendChild(newButton);
 }
 
@@ -22,6 +23,8 @@ for (let letter of alphabetArray) {
 // Use event bubbling to check if it's actually a button that has been pressed.
 buttonContainer.addEventListener("click", function (e) {
   if (e.target.classList.contains("letter-button")) {
+    e.target.classList.remove("not-guessed");
+    e.target.classList.add("guessed");
     processGuess(e.target.id);
   }
 });

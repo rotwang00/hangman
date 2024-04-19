@@ -6,3 +6,11 @@
 #button-container {
   margin: 24px;
 }
+
+.guessed {
+  color: red;
+}
+
+.not-guessed {
+  color: blue;
+}
