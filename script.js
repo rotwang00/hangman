@@ -1,8 +1,8 @@
 // Initialize global variables
-let lettersNotGuessed = "";
+let lettersGuessed = [];
 let secretWord = [];
 let wordInProgress = [];
-let guessesMade = 0;
+let wrongGuesses = 0;
 
 // Set up secret word container
 const secretWordContainer = document.getElementById("secret-word-container");
@@ -42,7 +42,7 @@ function setUpRound() {
   for (let i = 0; i < secretWord.length; i++) {
     wordInProgress.push("_");
   }
-  lettersNotGuessed = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  lettersGuessed = [];
   guessesMade = 0;
   updateGallows();
   return;
@@ -52,17 +52,45 @@ function updateGallows() {
   while (gallowsContainer.firstChild) {
     gallowsContainer.removeChild(gallowsContainer.firstChild);
   }
-  gallowsContainer.appendChild(gallowsImages[guessesMade]);
+  gallowsContainer.appendChild(gallowsImages[wrongGuesses]);
 }
 
 function updateSecretWordDisplay() {
+  secretWordContainer.innerHTML = "";
   for (letter of wordInProgress) {
     secretWordContainer.innerHTML += letter + " ";
   }
 }
 
 function processGuess(guess) {
-  console.log(guess);
+  if (!lettersGuessed.includes(guess)) {
+    lettersGuessed.push(guess);
+    let goodGuess = false;
+
+    for (let i = 0; i < secretWord.length; i++) {
+      if (secretWord[i] == guess) {
+        goodGuess = true;
+        wordInProgress[i] = guess;
+      }
+    }
+
+    if (goodGuess) {
+      updateSecretWordDisplay();
+    } else {
+      wrongGuesses++;
+      updateGallows();
+    }
+
+    // Is entire word guessed?
+    if (!wordInProgress.includes("_")) {
+      alert("You won!");
+    }
+
+    // Maximum guesses reached?
+    if (wrongGuesses == 6) {
+      alert("You lost!");
+    }
+  }
 }
 
 setUpRound();
